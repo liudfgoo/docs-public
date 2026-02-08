@@ -1,4 +1,5 @@
 baseURL = 'https://liudfgoo.github.io/docs-public/'
+canonifyURLs = true
 languageCode = 'zh-cn'
 title = '我的文档站'
 theme = 'PaperMod'
