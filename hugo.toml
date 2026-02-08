@@ -1,0 +1,45 @@
+baseURL = 'https://YOUR_USERNAME.github.io/docs-public/'
+languageCode = 'zh-cn'
+title = '我的文档站'
+theme = 'PaperMod'
+
+# 启用中文支持
+hasCJKLanguage = true
+
+# ���页显示的文章数量
+[pagination]
+  pagerSize = 5
+
+# 主题配置
+[params]
+  # 主题模式
+  defaultTheme = 'auto'
+  # 显示阅读时间
+  ShowReadingTime = true
+  # 显示字数统计
+  ShowWordCount = true
+  # 显示代码复制按钮
+  ShowCodeCopyButtons = true
+  # 显示面包屑导航
+  ShowBreadCrumbs = true
+  # 显示文章元信息
+  ShowPostNavLinks = true
+
+# 菜单配置
+[[menu.main]]
+  identifier = "home"
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 3

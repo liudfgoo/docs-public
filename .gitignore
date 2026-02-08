@@ -1,0 +1,22 @@
+# Hugo 构建输出
+public/
+resources/
+.hugo_build.lock
+
+# Obsidian
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
