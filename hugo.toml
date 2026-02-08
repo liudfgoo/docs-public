@@ -1,4 +1,4 @@
-baseURL = 'https://YOUR_USERNAME.github.io/docs-public/'
+baseURL = 'https://liudfgoo.github.io/docs-public/'
 languageCode = 'zh-cn'
 title = '我的文档站'
 theme = 'PaperMod'
