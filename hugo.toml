@@ -1,5 +1,6 @@
 baseURL = 'https://liudfgoo.github.io/docs-public/'
-canonifyURLs = true
+canonifyURLs = false  # 改为 false
+relativeURLs = false
 languageCode = 'zh-cn'
 disableLiveReload = true
 title = '我的文档站'
@@ -8,7 +9,7 @@ theme = 'PaperMod'
 # 启用中文支持
 hasCJKLanguage = true
 
-# ���页显示的文章数量
+# 显示的文章数量
 [pagination]
   pagerSize = 5
 
