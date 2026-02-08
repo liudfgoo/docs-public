@@ -30,6 +30,13 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: List files
+        run: |
+          echo "Public directory contents:"
+          ls -la public/
+          echo "Checking index.html:"
+          file public/index.html || echo "index.html not found"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
