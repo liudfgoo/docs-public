@@ -26,6 +26,8 @@ hasCJKLanguage = true
   ShowBreadCrumbs = true
   # 显示文章元信息
   ShowPostNavLinks = true
+  # 首页主要显示的内容区域
+  mainSections = ['posts']
 
 # 菜单配置
 [[menu.main]]
