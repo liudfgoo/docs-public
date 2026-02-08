@@ -36,6 +36,10 @@ jobs:
           ls -la public/
           echo "Checking index.html:"
           file public/index.html || echo "index.html not found"
+          echo "First 10 lines of index.html:"
+          head -10 public/index.html || echo "Cannot read index.html"
+          echo "File sizes:"
+          du -h public/index.* || echo "No index files"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
