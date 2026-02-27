@@ -4,7 +4,6 @@ draft = false
 title = '强化学习'
 description = '强化学习原理及其算法介绍'
 tags = ['强化学习', '教程']
-categories = ['教程']
 +++
 
 # 强化学习原理与核心算法
