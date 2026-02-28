@@ -1,12 +1,11 @@
 +++
-date = '2026-02-28T16:00:00+08:00'
+date = '2026-02-27T16:00:00+08:00'
 draft = false
-title = '强化学习'
+title = '强化学习原理与核心算法'
 description = '强化学习原理及其算法介绍'
 tags = ['强化学习', '教程']
+type = "posts"
 +++
-
-# 强化学习原理与核心算法
 
 ## 1. 问题的本质
 
@@ -40,7 +39,7 @@ $\gamma$ 控制智能体多"远视"。$\gamma=0$ 意味着只看眼前利益，$
 
 **累积折扣回报（Return）**：从时刻 $t$ 开始的总回报为
 
-$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$
+$$ G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1} $$
 
 这就是我们想最大化的东西。注意 $G_t$ 是一个**随机变量**——因为未来的状态转移和动作选择都有随机性。
 
@@ -70,7 +69,7 @@ $$V^\pi(s) = \sum_{a} \pi(a|s) \, Q^\pi(s, a)$$
 
 对 $V^\pi$，通过将 $G_t$ 展开一步：
 
-$$V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \, V^\pi(s') \right]$$
+$$ V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \, V^\pi(s') \right] $$
 
 **逐项解读**：
 - 对所有动作 $a$ 按策略 $\pi(a|s)$ 加权
@@ -81,15 +80,15 @@ $$V^\pi(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \, 
 
 对 $Q^\pi$ 也有类似的 Bellman 方程：
 
-$$Q^\pi(s,a) = \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \sum_{a'} \pi(a'|s') Q^\pi(s', a') \right]$$
+$$ Q^\pi(s,a) = \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \sum_{a'} \pi(a'|s') Q^\pi(s', a') \right] $$
 
 ### Bellman 最优方程
 
-我们的目标是找到**最优策略** $\pi^*$，对应的最优价值函数 $V^*$ 和 $Q^*$：
+我们的目标是找到**最优策略** ${\pi}^*$，对应的最优价值函数 $V^*$ 和 $Q^*$：
 
-$$V^*(s) = \max_a \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \, V^*(s') \right]$$
+$$ V^*(s) = \max_{a} \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \, V^*(s') \right] $$
 
-$$Q^*(s,a) = \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \max_{a'} Q^*(s', a') \right]$$
+$$ Q^*(s,a) = \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma \max_{a'} Q^*(s', a') \right] $$
 
 区别在于：期望方程里是"按策略 $\pi$ 加权"，最优方程里是"取 max"。一旦你有了 $Q^*$，最优策略就是 $\pi^*(s) = \arg\max_a Q^*(s,a)$——贪心地选 Q 值最大的动作。
 
@@ -185,11 +184,12 @@ DQN 有根本性限制：它只能处理**离散动作空间**（因为需要对
 
 直接参数化策略 $\pi_\theta(a|s)$（比如用神经网络输出动作概率），优化目标：
 
-$$J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^{T} \gamma^t r_t \right]$$
+$$ J(\theta) = \mathbb{E}_{\tau\sim \pi_{\theta}} \left[ \sum_{t=0}^{T} \gamma^{t} r_t \right] $$
+
 
 **策略梯度定理**（这是 RL 最重要的定理之一）：
 
-$$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot G_t \right]$$
+$$ \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a_t|s_t) \cdot G_t \right] $$
 
 **逐项拆解**：
 - $\nabla_\theta \log \pi_\theta(a_t|s_t)$：策略关于参数的梯度方向——"参数怎么调，才能让动作 $a_t$ 在状态 $s_t$ 下更可能被选中"
