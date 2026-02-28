@@ -29,6 +29,9 @@ hasCJKLanguage = true
   ShowPostNavLinks = true
   # 首页主要显示的内容区域
   mainSections = ['posts']
+  math = true
+  disableSpecial1stPost = true
+
 
 # 菜单配置
 [[menu.main]]
@@ -48,3 +51,15 @@ hasCJKLanguage = true
   name = "关于"
   url = "/about/"
   weight = 3
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$']]
+          inline = [['$', '$']]
+
+[frontmatter]
+  lastmod = ['lastmod', ':git', 'date', 'publishDate']
